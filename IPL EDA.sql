@@ -137,4 +137,71 @@ from ['IPL Matches 2008-2020$']
 group by winner
 order by counts desc;
 
+---------------------------------------------------------------------------------------------------------------------------
+--Lets discuss AB Devilliers
+--Between overs 1 to 5:
+select batsman, 100 * round((sum(batsman_runs)/count(ball)),4) as Strike_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+where over_no <= 4 and batsman = 'AB de Villiers'
+group by batsman;
 
+-- Between overs 6 to 10:
+select batsman, 100 * round((sum(batsman_runs)/count(ball)),4) as Strike_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+where over_no > 4  and over_no <= 9 and batsman = 'AB de Villiers'
+group by batsman
+order by Strike_Rate desc;
+
+-- Between overs 11 to 15:
+select batsman, 100 * round((sum(batsman_runs)/count(ball)),4) as Strike_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+where over_no > 9  and over_no <= 14 and batsman = 'AB de Villiers'
+group by batsman
+order by Strike_Rate desc;
+
+-- Between overs 16 to 20:
+select batsman, 100 * round((sum(batsman_runs)/count(ball)),4) as Strike_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+where over_no > 14 and batsman = 'AB de Villiers'
+group by batsman
+order by Strike_Rate desc;
+
+-- Count of Fours 
+select batsman, count(batsman_runs) as fours
+from ['IPL Ball-by-Ball 2008-2020$']
+where batsman_runs = 4 and batsman = 'AB de Villiers'
+group by batsman;
+
+-- Count of Sixes
+select batsman, count(batsman_runs) as sixes
+from ['IPL Ball-by-Ball 2008-2020$']
+where batsman_runs = 6 and batsman = 'AB de Villiers'
+group by batsman;
+
+
+
+
+-- Now, Lets discuss Malinga
+-- Economy Rate for first 5 overs
+select bowler, 6 * sum(total_runs)/count(bowler) as Economy_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+WHERE over_no<=4 and bowler = 'SL Malinga'
+group by bowler;
+
+-- Economy Rate between overs 6 to 10
+select bowler, 6 * sum(total_runs)/count(bowler) as Economy_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+WHERE over_no>4 and over_no<=9 and bowler = 'SL Malinga'
+group by bowler;
+
+-- Economy Rate between overs 11 to 15
+select bowler, 6 * sum(total_runs)/count(bowler) as Economy_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+WHERE over_no>9 and over_no<=14 and bowler = 'SL Malinga'
+group by bowler;
+
+-- Economy Rate between overs 16 to 20
+select bowler, 6 * sum(total_runs)/count(bowler) as Economy_Rate
+from ['IPL Ball-by-Ball 2008-2020$']
+WHERE over_no>14 and bowler = 'SL Malinga'
+group by bowler;
