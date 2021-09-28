@@ -76,6 +76,3 @@ Average total steps per day are 7638 which a little bit less for having health b
 */
 
 
-
-select * from Daily_data$;
-
